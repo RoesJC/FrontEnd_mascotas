@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-sm-12">
+    <form (ngSubmit)="onSubmit()" #solicitudForm="ngForm">
+      <fieldset class="form-group">
+        <div class="col-sm-12">
+          <label for="estado">Estado</label>
+          <select
+            class="form-control"
+            required
+            [(ngModel)]="solicitud.estado"
+            name="estado"
+          >
+            <option value="" disabled selected>Seleccione un estado</option>
+            <option *ngFor="let estado of estados" [value]="estado">
+              {{ estado }}
+            </option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <div class="col-sm-12">
+          <label for="mascotasId">Mascota</label>
+          <select
+            class="form-control"
+            required
+            [(ngModel)]="solicitud.mascotasId"
+            name="mascotasId"
+          >
+            <option value="" disabled selected>Seleccione una mascota</option>
+            <option *ngFor="let mascota of mascotas" [value]="mascota.mascotasId">
+              {{ mascota.nombre }} - ({{ mascota.tipo }})
+            </option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <div class="col-sm-12">
+          <label for="interesId">Interesado</label>
+          <select
+            class="form-control"
+            required
+            [(ngModel)]="solicitud.interesId"
+            name="interesId"
+          >
+            <option value="" disabled selected>Seleccione un interesado</option>
+            <option *ngFor="let interesado of interesados" [value]="interesado.interesId">
+              {{ interesado.nombre }} - {{ interesado.telefono }}
+            </option>
+          </select>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <div class="col-sm-12">
+          <label for="fecha">Fecha</label>
+          <input
+            type="date"
+            class="form-control"
+            required
+            [(ngModel)]="solicitud.fecha"
+            name="fecha"
+          />
+        </div>
+      </fieldset>
+
+      <fieldset class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="!solicitudForm.form.valid"
+          >
+            Enviar
+          </button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+

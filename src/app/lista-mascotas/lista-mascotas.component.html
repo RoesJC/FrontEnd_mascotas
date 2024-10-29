@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <form class="form-inline">
+        <fieldset class="form-group col-sm-11"></fieldset>
+        <fieldset class="form-group col-sm-1">
+          <a class="btn btn-primary" [routerLink]="['/mascotas/agregar']">Nueva Mascota</a>
+        </fieldset>
+      </form>
+      <br>
+      <table class="table table-striped">
+        <thead>
+          <tr class="row">
+            <th class="col-sm-2"> ID </th>
+            <th class="col-sm-4"> NOMBRE </th>
+            <th class="col-sm-4"> RAZA </th>
+            <th class="col-sm-4"> TIPO </th>
+            <th class="col-sm-4"> SEXO </th>
+            <th class="col-sm-4"> EDAD </th>
+            <th class="col-sm-2"> ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mascota of mascotas | async" class="row">
+            <td class="col-sm-2"><i>{{ mascota.mascotasId }}</i></td>
+            <td class="col-sm-4"><i>{{ mascota.nombre }}</i></td>
+            <td class="col-sm-4"><i>{{ mascota.raza }}</i></td>
+            <td class="col-sm-4"><i>{{ mascota.tipo }}</i></td>
+            <td class="col-sm-4"><i>{{ mascota.sexo }}</i></td>
+            <td class="col-sm-4"><i>{{ mascota.edad }}</i></td>
+            <td class="col-sm-1">
+              <fieldset class="form-group col-sm-1">
+                <a class="btn btn-info" [routerLink]="['/mascotas/editar/', mascota.mascotasId]">Editar</a>
+              </fieldset>
+            </td>
+            <td class="col-sm-1">
+              <fieldset class="form-group col-sm-1">
+                <a class="btn btn-danger" (click)="borrarMascota(mascota.mascotasId)">Borrar</a>
+              </fieldset>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

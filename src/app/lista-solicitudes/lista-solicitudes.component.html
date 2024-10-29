@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <form class="form-inline">
+        <fieldset class="form-group col-sm-11"></fieldset>
+        <fieldset class="form-group col-sm-1">
+          <a class="btn btn-primary" [routerLink]="['/solicitudes/agregar']">Nueva Solicitud</a>
+        </fieldset>
+      </form>
+      <br>
+      <table class="table table-striped">
+        <thead>
+          <tr class="row">
+            <th class="col-sm-2"> ID </th>
+            <th class="col-sm-4"> ESTADO </th>
+            <th class="col-sm-4"> MASCOTA </th>
+            <th class="col-sm-4"> INTERESADO </th>
+            <th class="col-sm-4"> FECHA </th>
+            <th class="col-sm-2"> ACCIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let solicitud of solicitudes | async" class="row">
+            <td class="col-sm-2"><i>{{ solicitud.solicitudId }}</i></td>
+            <td class="col-sm-4"><i>{{ solicitud.estado }}</i></td>
+            <td class="col-sm-4"><i>{{ solicitud.mascotasId }}</i></td>
+            <td class="col-sm-4"><i>{{ solicitud.interesId }}</i></td>
+            <td class="col-sm-4"><i>{{ solicitud.fecha }}</i></td>
+            <td class="col-sm-1">
+              <fieldset class="form-group col-sm-1">
+                <a class="btn btn-info" [routerLink]="['/solicitudes/editar/', solicitud.solicitudId]">Editar</a>
+              </fieldset>
+            </td>
+            <td class="col-sm-1">
+              <fieldset class="form-group col-sm-1">
+                <a class="btn btn-danger" (click)="borrarSolicitud(solicitud.solicitudId)">Borrar</a>
+              </fieldset>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div> 
+  </div>
+</div>
